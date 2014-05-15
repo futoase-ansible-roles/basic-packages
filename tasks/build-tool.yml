@@ -1,0 +1,12 @@
+---
+- name: install the DevelopmentTools group
+  yum: name="@Development Tools" 
+       state=present
+  notify: yum update
+
+- name: install more packages
+  yum: name={{ item  }}
+  with_items:
+    - git
+    - libselinux-python
+  notify: yum update
